@@ -21,13 +21,18 @@ import view.RowGameGUI;
 public class RowGameController {
     public static final String GAME_END_NOWINNER = "Game ends in a draw";
 
-    public RowGameModel gameModel;
-    public RowGameGUI gameView;
+    public RowGameModel gameModel; //private RowGameModel gameModel TO DO
+    public RowGameGUI gameView; //need to remove 
 
 
     /**
      * Creates a new game initializing the GUI.
      */
+	public void setModel(RowGameModel model){
+		this.gameModel = model; 
+	}
+
+	 
     public RowGameController() {
 	gameModel = new RowGameModel();
 	gameView = new RowGameGUI(this);
