@@ -17,8 +17,8 @@ import model.RowGameModel;
 
 public class RowGameBoardView implements RowGameView
 {
-    public JButton[][] blocks = new JButton[3][3];
-    public JPanel gamePanel = new JPanel(new FlowLayout());
+    private JButton[][] blocks = new JButton[3][3];
+    private JPanel gamePanel = new JPanel(new FlowLayout());
 
     
     public RowGameBoardView(RowGameController gameController) {
@@ -55,6 +55,13 @@ public class RowGameBoardView implements RowGameView
 	    } // end for col
 	} // end for row	
     }
+    //TO DO (getters and setters)
+    public JPanel get_gamePanel(){ 
+        return this.gamePanel; 
+    }
+    public JButton[][] get_blocks(){ 
+        return this.blocks; 
+    }
 
     /**
      * Updates the block view at the given row and column 
@@ -65,7 +72,7 @@ public class RowGameBoardView implements RowGameView
      * @param column The column that contains the block
      */
     protected void updateBlock(RowGameModel gameModel, int row, int col) {
-	blocks[row][col].setText(gameModel.blocksData[row][col].getContents());
-	blocks[row][col].setEnabled(gameModel.blocksData[row][col].getIsLegalMove());	
+	blocks[row][col].setText(gameModel.get_blocksData()[row][col].getContents());
+	blocks[row][col].setEnabled(gameModel.get_blocksData()[row][col].getIsLegalMove());	
     }
 }

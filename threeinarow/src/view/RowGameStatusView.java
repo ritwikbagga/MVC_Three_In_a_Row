@@ -12,11 +12,11 @@ import model.RowGameModel;
 
 public class RowGameStatusView implements RowGameView
 {
-    public JTextArea playerturn = new JTextArea();
-    public JPanel messages = new JPanel(new FlowLayout());
+    private JTextArea playerturn = new JTextArea();
+    private JPanel messages = new JPanel(new FlowLayout()); //get Message
 
     
-    public RowGameStatusView(RowGameController gameController) {
+    public RowGameStatusView(RowGameModel gameModel) {
 	super();
 
 	messages.setBackground(Color.white);
@@ -35,5 +35,8 @@ public class RowGameStatusView implements RowGameView
 	else {
 	    playerturn.setText(gameModel.getFinalResult());
 	}	
-    }
+	}
+	public JPanel get_messages(){ 
+		return this.messages; 
+	}
 }
