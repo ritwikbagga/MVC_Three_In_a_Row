@@ -27,7 +27,8 @@ public class RowGameModel
 	    for (int col = 0; col < 3; col++) {
 		blocksData[row][col] = new RowBlockModel(this);
 	    } // end for col
-	} // end for row
+    } // end for row
+    resetGame(); 
     }
 
     public void add_view(RowGameGUI v){ 
