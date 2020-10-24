@@ -23,7 +23,7 @@ public class RowGameController {
 
 	 
     public RowGameController() {
-	gameModel = new RowGameModel();
+	gameModel = new RowGameModel(); //row col
     }
 
     public RowGameModel getModel() {
