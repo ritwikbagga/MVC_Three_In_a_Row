@@ -1,5 +1,7 @@
 package model;
 import view.* ;
+
+import javax.naming.ldap.LdapContext;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
@@ -60,6 +62,26 @@ public class RowGameModel
     
      public RowGameGUI getView() {
 	    return this.gameView;
+     }
+
+     public int[] get_button_index(JButton block)
+     {
+        int x=0; 
+        int y =0; 
+        int coordinates[]= null; 
+        int board_length = gameView.get_GameBoardView().get_blocks().length;
+        for(int i = 0 ; i<board_length; i++)
+        {   
+            for(int j  =0; j<board_length ; j++)
+            { 
+                if( block==gameView.get_GameBoardView().get_blocks()[i][j]); 
+                x = i; 
+                y = j ; 
+            }
+        }
+        coordinates[0] =x;
+        coordinates[1]= y ; 
+        return coordinates; 
      }
 
     // public void startUp() {
@@ -401,9 +423,44 @@ public class RowGameModel
         gameView.update(this);
         }
 
+
+
+        //To check for winner
+    public boolean isWinner(JButton block)
+    {
+        int row_count = 0;
+        int col_ccount = 0 ;
+        int RDiag_count = 0;
+        int LDiag_count = 0 ;
+        String current_player = get_Player_id(); 
+        int board_length = gameView.get_GameBoardView().get_blocks().length; 
+        int pos_x = get_button_index(block)[0] ; 
+        int pos_y = get_button_index(block)[1]; 
+        for (int i = 0; i<board_length; i++)
+         { 
+             if(this.blocksData[pos_x][i].getContents().equals(current_player))
+                row_count++; 
+            if(this.blocksData[i][pos_y].getContents().equals(current_player))
+                col_ccount++;
+            if(this.blocksData[i][i].getContents().equals(current_player))
+            RDiag_count++;
+            if(this.blocksData[board_length-1-i][i].getContents().equals(current_player))
+               LDiag_count++;
+         }
+
+         if(row_count==board_length || col_ccount==board_length || RDiag_count==board_length || LDiag_count==board_length)
+            return true;
+        return false;
+    }
+
+
+
+
         /**
      * Ends the game disallowing further player turns.
      */
+
+
     public void endGame() {
         for(int row = 0;row<3;row++) {
             for(int column = 0;column<3;column++) {
