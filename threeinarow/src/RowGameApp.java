@@ -8,6 +8,6 @@ public class RowGameApp
      */
     public static void main(String[] args) {
 	RowGameController game = new RowGameController(); 
-	game.startUp();
+	game.getModel().startUp();
     }
 }

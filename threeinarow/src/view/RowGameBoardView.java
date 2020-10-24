@@ -21,7 +21,7 @@ public class RowGameBoardView implements RowGameView
     private JPanel gamePanel = new JPanel(new FlowLayout());
 
     
-    public RowGameBoardView(RowGameController gameController) {
+    public RowGameBoardView(RowGameModel gameModel) {
 	super();
 
         JPanel game = new JPanel(new GridLayout(3,3));
@@ -35,7 +35,7 @@ public class RowGameBoardView implements RowGameView
                 game.add(blocks[row][column]);
                 blocks[row][column].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-			gameController.move((JButton)e.getSource());
+			gameModel.move((JButton)e.getSource());
                     }
                 });
             }

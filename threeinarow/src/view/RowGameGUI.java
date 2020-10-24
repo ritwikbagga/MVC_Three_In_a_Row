@@ -12,32 +12,31 @@ import controller.RowGameController;
 
 public class RowGameGUI implements RowGameView
 {
-    public JFrame gui = new JFrame("Three in a Row YOYOYO");
-    public RowGameBoardView gameBoardView;
-    public JButton reset = new JButton("Reset");
-    public RowGameStatusView gameStatusView;
-    
-    private RowGameController gameController;
+    private  JFrame gui = new JFrame("Three in a Row");
+    private RowGameBoardView gameBoardView;
+    private JButton reset = new JButton("Reset");
+    private RowGameStatusView gameStatusView; 
+    private RowGameModel gameModel;
 
 
     /**
      * Creates a new game initializing the GUI.
      */
-    public RowGameGUI(RowGameController gameController) {
-	this.gameController = gameController;
+    public RowGameGUI(RowGameModel gameModel) {
+	this.gameModel = gameModel;
 	
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setSize(new Dimension(500, 350));
         gui.setResizable(true);
 
-	gameBoardView = new RowGameBoardView(this.gameController);
-        JPanel gamePanel = gameBoardView.gamePanel;
+	gameBoardView = new RowGameBoardView(this.gameModel);
+        JPanel gamePanel = gameBoardView.get_gamePanel();
 
         JPanel options = new JPanel(new FlowLayout());
         options.add(reset);
 
-	gameStatusView = new RowGameStatusView(this.gameController);
-        JPanel messages = gameStatusView.messages;
+	gameStatusView = new RowGameStatusView(this.gameModel);
+        JPanel messages = gameStatusView.get_messages();
 
         gui.add(gamePanel, BorderLayout.NORTH);
         gui.add(options, BorderLayout.CENTER);
@@ -45,9 +44,15 @@ public class RowGameGUI implements RowGameView
 
         reset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                gameController.resetGame();
+                gameModel.resetGame();
             }
         });
+    }
+    public JFrame get_gui(){  //RowGameBoardView
+        return this.gui;
+    }
+    public RowGameBoardView get_GameBoardView(){ 
+        return this.gameBoardView;
     }
 
     /**
@@ -60,5 +65,8 @@ public class RowGameGUI implements RowGameView
 	gameBoardView.update(gameModel);
 
 	gameStatusView.update(gameModel);
+    }
+    public RowGameBoardView get_RowGameBoardView(){ 
+        return this.gameBoardView; 
     }
 }
