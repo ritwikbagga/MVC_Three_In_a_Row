@@ -100,10 +100,13 @@ public class RowGameModel
         {   
             for(int j  =0; j<board_length ; j++)
             { 
-                if( block==gameView.get_GameBoardView().get_blocks()[i][j]); 
-                x = i; 
-                y = j ; 
-                break; 
+                if( block==gameView.get_GameBoardView().get_blocks()[i][j])
+                {
+                    x = i; 
+                    y = j ; 
+                    break; 
+                }
+              
             }
         }
 
@@ -112,9 +115,7 @@ public class RowGameModel
         return coordinates; 
      }
 
-    // public void startUp() {
-	// gameView.get_gui().setVisible(true);
-    // }
+
 
     
     public void move(JButton block) {
