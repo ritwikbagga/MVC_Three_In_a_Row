@@ -128,7 +128,7 @@ public class RowGameModel
             int  y_index = get_button_index(block)[1];
             this.blocksData[x_index][y_index].setContents(get_player_symbol()); 
             this.blocksData[x_index][y_index].setIsLegalMove(false);
-            if (x_index>0)   //for gravity condition
+            if (x_index>0)   //for gravity condition 
             {
                 this.blocksData[x_index-1][y_index].setIsLegalMove(true);
             }
@@ -150,9 +150,9 @@ public class RowGameModel
                     else
                         set_Player_id(player1);
                     
-                    gameView.update(this);
+                    
                 }
-               
+                gameView.update(this);
 
          }
         
