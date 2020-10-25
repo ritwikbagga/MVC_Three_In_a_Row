@@ -1,16 +1,17 @@
 package model;
+import javax.swing.JButton;
 
 import model.RowGameModel;
 
 
 public interface RowGameRulesStrategy
 {
-    public void reset(RowGameModel gameModel);
+    public void resetGame();
 
-    public void move(RowGameModel gameModel, int row, int col);
+    public void move(JButton block);
 
-    public boolean isWin(RowGameModel gameModel);
+    public boolean isWinner(JButton block);
 
-    public boolean isTie(RowGameModel gameModel);
+    public boolean isTie();
 }
 //

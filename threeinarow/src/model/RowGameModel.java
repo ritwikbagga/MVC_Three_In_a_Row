@@ -13,8 +13,8 @@ import view.RowGameGUI;
 public class RowGameModel  implements RowGameRulesStrategy
 {
     protected static final String GAME_END_NOWINNER = "Game ends in a draw";
-    public static final String player1 = "1";
-    public static final String player2 = "2";
+    protected static final String player1 = "1";
+    protected static final String player2 = "2";
     protected RowBlockModel[][] blocksData = new RowBlockModel[10][10];
     protected  RowGameGUI gameView; 
     protected String player ; 
@@ -59,6 +59,16 @@ public class RowGameModel  implements RowGameRulesStrategy
 
     public String get_Player_id(){
         return this.player; 
+    }
+
+    public String get_player1()
+    { 
+        return player1; 
+    }
+
+    public String get_player2()
+    { 
+        return player2; 
     }
 
     public int get_rowCount(){
@@ -243,7 +253,7 @@ public class RowGameModel  implements RowGameRulesStrategy
                 {
                         get_blocksData()[row][column].reset();
                 // Enable the bottom row
-                    get_blocksData()[row][column].setIsLegalMove(row == row_count-1);
+                    get_blocksData()[row][column].setIsLegalMove(true);
                 }
             }
             player = player1;
@@ -251,6 +261,11 @@ public class RowGameModel  implements RowGameRulesStrategy
             setFinalResult(null);
             gameView.update(this);
         }
+
+    public boolean isTie()
+    {
+        return movesLeft==0;
+    }
     
 
 

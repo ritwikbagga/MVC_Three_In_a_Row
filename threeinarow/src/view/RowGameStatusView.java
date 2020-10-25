@@ -25,7 +25,7 @@ public class RowGameStatusView implements RowGameView
 
     public void update(RowGameModel gameModel) {
 	if (gameModel.getFinalResult() == null) {
-	    if (gameModel.get_Player_id().equals(gameModel.player1)) {
+	    if (gameModel.get_Player_id().equals(gameModel.get_player1())) {
 		playerturn.setText("Player 1 to play 'X'");
 	    }
 	    else {
