@@ -177,7 +177,7 @@ public class RowGameModel  implements RowGameRulesStrategy
                     this.setFinalResult("Player " + get_Player_id()+ " " + "wins!");
                     endGame();
                 }
-            else if(get_MovesLeft()==0)
+            else if(isTie())
                 { 
                     this.setFinalResult(GAME_END_NOWINNER);
                 }
