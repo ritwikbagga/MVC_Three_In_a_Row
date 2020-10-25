@@ -8,7 +8,9 @@ public class RowGameApp
      */
     public static void main(String[] args) {
     //RowGameController game = new RowGameController(); 
+    //RowGameController game = new RowGameController("ThreeInARow");
     RowGameController game = new RowGameController("TicTacTo");
+
 	game.getModel().startUp();
     }
 }

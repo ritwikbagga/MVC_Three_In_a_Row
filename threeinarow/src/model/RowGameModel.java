@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.*;
 import view.RowGameGUI;
 
-public class RowGameModel 
+public class RowGameModel  implements RowGameRulesStrategy
 {
     protected static final String GAME_END_NOWINNER = "Game ends in a draw";
     public static final String player1 = "1";
