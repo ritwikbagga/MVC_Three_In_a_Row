@@ -15,6 +15,7 @@ public class TicTacTo extends RowGameModel{
     public TicTacTo()
     { 
         super(); 
+        super.gameView.get_gui().setTitle("You are playing TicTacToe!"); ////Set title for JFrame
     }
 
     public void move(JButton block) {

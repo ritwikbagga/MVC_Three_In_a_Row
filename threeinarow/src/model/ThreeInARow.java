@@ -14,6 +14,7 @@ public class ThreeInARow extends RowGameModel{
     public ThreeInARow()
     { 
         super(); 
+        super.gameView.get_gui().setTitle("You are playing 3 in a row!"); //Set title for JFrame
     }
 
     public void move(JButton block) {

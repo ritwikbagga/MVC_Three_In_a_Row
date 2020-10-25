@@ -12,7 +12,7 @@ import controller.RowGameController;
 
 public class RowGameGUI implements RowGameView
 {
-    private  JFrame gui = new JFrame("Three in a Row");
+    private  JFrame gui = new JFrame("Game");
     private RowGameBoardView gameBoardView;
     private JButton reset = new JButton("Reset");
     private RowGameStatusView gameStatusView; 
@@ -42,7 +42,7 @@ public class RowGameGUI implements RowGameView
         gui.add(options, BorderLayout.CENTER);
         gui.add(messages, BorderLayout.SOUTH);
 
-        reset.addActionListener(new ActionListener() {
+        reset.addActionListener(new ActionListener() { //add adaptor
             public void actionPerformed(ActionEvent e) {
                 gameModel.resetGame();
             }
@@ -51,6 +51,8 @@ public class RowGameGUI implements RowGameView
     public JFrame get_gui(){  //RowGameBoardView
         return this.gui;
     }
+
+ 
     public RowGameBoardView get_GameBoardView(){ 
         return this.gameBoardView;
     }
