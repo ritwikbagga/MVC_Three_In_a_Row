@@ -8,13 +8,14 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
 import view.RowGameGUI;
+import controller.RowGameController;
 
 
 public class TicTacTo extends RowGameModel{
     
-    public TicTacTo()
+    public TicTacTo(RowGameController c)
     { 
-        super(); 
+        super(c); 
         super.gameView.get_gui().setTitle("You are playing TicTacToe!"); ////Set title for JFrame
     }
 

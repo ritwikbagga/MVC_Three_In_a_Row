@@ -26,17 +26,17 @@ public class RowGameController {
 
 	 
     public RowGameController() {
-	gameModel = new RowGameModel(); 
+	gameModel = new RowGameModel(this); 
 	}
 
 	public RowGameController(String Game) {
 
 		if (Game.equals("ThreeInARow"))
-		gameModel = new ThreeInARow(); 
+		gameModel = new ThreeInARow(this); 
 		else if (Game.equals("TicTacTo"))
-		gameModel = new TicTacTo();
+		gameModel = new TicTacTo(this);
 		else
-		gameModel = new RowGameModel(); //default
+		gameModel = new RowGameModel(this); //default
 		
 	}
 

@@ -43,7 +43,7 @@ public class RowGameModel  implements RowGameRulesStrategy
     resetGame(); 
     }
     public RowGameModel(int r, int c, RowGameController controller) {
-        this.c = c 
+        this.c = controller ; 
         this.row_count = r; 
         this.col_count = c; 
         this.movesLeft = r*c ;

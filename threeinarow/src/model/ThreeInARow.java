@@ -9,11 +9,12 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
 import view.RowGameGUI;
+import controller.RowGameController;
 
 public class ThreeInARow extends RowGameModel{
-    public ThreeInARow()
+    public ThreeInARow(RowGameController c)
     { 
-        super(); 
+        super(c); 
         super.gameView.get_gui().setTitle("You are playing 3 in a row!"); //Set title for JFrame
     }
 

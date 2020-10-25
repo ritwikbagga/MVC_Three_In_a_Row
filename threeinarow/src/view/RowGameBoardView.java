@@ -8,13 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import Adaptor.Adaptor;
-import Adaptor.adaptor;
+import adaptor.Adaptor;
 import controller.RowGameController;
 import model.RowGameModel;
 import view.RowGameGUI;
-import Adaptor.adaptor;
+
 
 
 public class RowGameBoardView implements RowGameView
