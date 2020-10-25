@@ -1,5 +1,8 @@
 package controller;
 import model.RowGameModel;
+import model.ThreeInARow;
+import model.TicTacTo;
+
 import javax.swing.JButton;
 
 
@@ -23,8 +26,20 @@ public class RowGameController {
 
 	 
     public RowGameController() {
-	gameModel = new RowGameModel(); //row col
-    }
+	gameModel = new RowGameModel(); 
+	}
+
+	public RowGameController(String Game) {
+
+		if (Game.equals("ThreeInARow"))
+		gameModel = new ThreeInARow(); 
+		else if (Game.equals("TicTacTo"))
+		gameModel = new TicTacTo();
+		else
+		gameModel = new RowGameModel(); //default
+		
+	}
+
 
     public RowGameModel getModel() {
 	return this.gameModel;

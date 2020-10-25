@@ -12,20 +12,24 @@ import view.RowGameGUI;
 
 public class RowGameModel 
 {
-    private static final String GAME_END_NOWINNER = "Game ends in a draw";
-    private static final String player1 = "1";
-    private static final String player2 = "2";
-    private RowBlockModel[][] blocksData = new RowBlockModel[3][3];
-    private  RowGameGUI gameView; 
-    private String player ; 
-    private int movesLeft; 
-    private String finalResult = null;
+    protected static final String GAME_END_NOWINNER = "Game ends in a draw";
+    public static final String player1 = "1";
+    public static final String player2 = "2";
+    protected RowBlockModel[][] blocksData = new RowBlockModel[10][10];
+    protected  RowGameGUI gameView; 
+    protected String player ; 
+    protected int movesLeft; 
+    protected String finalResult = null;
+    protected int row_count ; 
+    protected int col_count; 
     
 
     
 
     public RowGameModel() {
-    this.movesLeft = 9 ;
+    this.row_count=3; 
+    this.col_count=3; 
+    this.movesLeft = row_count*col_count ;
     this.player = player1;
     this.gameView = new RowGameGUI(this); 
 	for (int row = 0; row < 3; row++) {
@@ -35,13 +39,34 @@ public class RowGameModel
     } // end for row
     resetGame(); 
     }
-
+    public RowGameModel(int r, int c) {
+        this.row_count = r; 
+        this.col_count = c; 
+        this.movesLeft = r*c ;
+        this.player = player1;
+        this.blocksData = new RowBlockModel[r][c] ; 
+        this.gameView = new RowGameGUI(this); 
+        for (int row = 0; row < row_count; row++) {
+            for (int col = 0; col < col_count; col++) {
+            blocksData[row][col] = new RowBlockModel(this);
+            } // end for col
+        } // end for row
+        resetGame(); 
+        }
     public void add_view(RowGameGUI v){ 
         this.gameView = new RowGameGUI(this); 
     }
 
     public String get_Player_id(){
         return this.player; 
+    }
+
+    public int get_rowCount(){
+        return row_count; 
+    }
+
+    public int get_colCount(){
+        return col_count; 
     }
 
 
@@ -96,9 +121,9 @@ public class RowGameModel
         int y =0; 
         int[] coordinates= new int[2] ; 
         int board_length = gameView.get_GameBoardView().get_blocks().length;
-        for(int i = 0 ; i<board_length; i++)
+        for(int i = 0 ; i<row_count; i++)
         {   
-            for(int j  =0; j<board_length ; j++)
+            for(int j  =0; j<col_count ; j++)
             { 
                 if( block==gameView.get_GameBoardView().get_blocks()[i][j])
                 {
@@ -117,8 +142,7 @@ public class RowGameModel
 
 
 
-    
-    public void move(JButton block) {
+     public void move(JButton block) {
 
         if(get_MovesLeft()>0)
         { 
@@ -156,7 +180,8 @@ public class RowGameModel
 
          }
         
-     }
+     }    
+
 
 
 
@@ -197,8 +222,8 @@ public class RowGameModel
 
 
     public void endGame() {
-        for(int row = 0;row<3;row++) {
-            for(int column = 0;column<3;column++) {
+        for(int row = 0;row<row_count;row++) {
+            for(int column = 0;column<col_count;column++) {
             this.blocksData[row][column].setIsLegalMove(false);
             }
         }
@@ -212,17 +237,17 @@ public class RowGameModel
  */
     public void resetGame() 
         {
-            for(int row = 0;row<3;row++) 
+            for(int row = 0;row<row_count;row++) 
             {
-                for(int column = 0;column<3;column++) 
+                for(int column = 0;column<col_count;column++) 
                 {
                         get_blocksData()[row][column].reset();
                 // Enable the bottom row
-                    get_blocksData()[row][column].setIsLegalMove(row == 2);
+                    get_blocksData()[row][column].setIsLegalMove(row == row_count-1);
                 }
             }
-            player = "1";
-            movesLeft = 9;
+            player = player1;
+            movesLeft = row_count*col_count;
             setFinalResult(null);
             gameView.update(this);
         }
