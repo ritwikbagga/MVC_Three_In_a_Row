@@ -13,13 +13,13 @@ import model.TicTacTo;
  * An example test class, which merely shows how to write JUnit tests.
  */
 public class TestExample {
-    private RowGameModel gameModel;
+   // private RowGameModel gameModel;
     private TicTacTo TicTacTo_model; 
     private ThreeInARow ThreeinaRow_model; 
 
     @Before
     public void setUp() {
-    gameModel = new RowGameModel();
+   // gameModel = new RowGameModel();
     TicTacTo_model=  new TicTacTo();
     ThreeinaRow_model = new ThreeInARow(); 
     }
@@ -49,7 +49,7 @@ public class TestExample {
     @Test
     public void test_legal_move() {
         assertEquals (true, TicTacTo_model.get_blocksData()[2][0].getIsLegalMove());
-        assertEquals (true, TicTacTo_model.get_blocksData()[0][0].getIsLegalMove());
+        assertEquals (true, ThreeinaRow_model.get_blocksData()[0][0].getIsLegalMove());
 
        // ThreeinaRow_model.get_blocksData()[2][0].setContents("X"); 
        // assertEquals (true, ThreeinaRow_model.get_blocksData()[1][0].getIsLegalMove());
@@ -76,6 +76,9 @@ public class TestExample {
         assertEquals ("1", gameModel.get_Player_id());
         assertEquals (9, gameModel.get_MovesLeft());
     }
+
+
+    
 
 
 

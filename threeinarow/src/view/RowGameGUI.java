@@ -1,11 +1,10 @@
 package view;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
-
+import Adaptor.Adaptor;
 import model.RowGameModel;
 import controller.RowGameController;
 
@@ -17,19 +16,22 @@ public class RowGameGUI implements RowGameView
     private JButton reset = new JButton("Reset");
     private RowGameStatusView gameStatusView; 
     private RowGameModel gameModel;
+    private Adaptor adaptor; 
+    private RowGameController c  ; 
 
 
     /**
      * Creates a new game initializing the GUI.
      */
-    public RowGameGUI(RowGameModel gameModel) {
-	this.gameModel = gameModel;
+    public RowGameGUI(RowGameModel gameModel, RowGameController c) {
+    this.gameModel = gameModel;
+    this.c = c; 
 	
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setSize(new Dimension(500, 350));
         gui.setResizable(true);
 
-	gameBoardView = new RowGameBoardView(this.gameModel);
+	gameBoardView = new RowGameBoardView(this.gameModel, this.adaptor);
         JPanel gamePanel = gameBoardView.get_gamePanel();
 
         JPanel options = new JPanel(new FlowLayout());
@@ -41,16 +43,29 @@ public class RowGameGUI implements RowGameView
         gui.add(gamePanel, BorderLayout.NORTH);
         gui.add(options, BorderLayout.CENTER);
         gui.add(messages, BorderLayout.SOUTH);
-
-        reset.addActionListener(new ActionListener() { //add adaptor
-            public void actionPerformed(ActionEvent e) {
-                gameModel.resetGame();
-            }
-        });
+        this.adaptor = new Adaptor(this.c, this);  //initialze adaptor
+        reset.addActionListener(adaptor); //Adaptor used
     }
     public JFrame get_gui(){  //RowGameBoardView
         return this.gui;
     }
+
+    public boolean isReset(JButton button){ 
+        if (button==this.reset)
+         return true; 
+    return false;
+    }
+
+    public Adaptor get_adaptor(){ 
+        return this.adaptor; 
+    }
+
+    // public void setActionListener(RowGameController c )
+    // {
+    //     this.adaptor = new Adaptor(c, this); 
+        
+
+    // }
 
  
     public RowGameBoardView get_GameBoardView(){ 

@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
 import view.RowGameGUI;
+import controller.RowGameController;
 
 public class RowGameModel  implements RowGameRulesStrategy
 {
@@ -22,16 +23,18 @@ public class RowGameModel  implements RowGameRulesStrategy
     protected String finalResult = null;
     protected int row_count ; 
     protected int col_count; 
+    private RowGameController c ;
     
 
     
 
-    public RowGameModel() {
+    public RowGameModel(RowGameController c ) {
+    this.c = c; 
     this.row_count=3; 
     this.col_count=3; 
     this.movesLeft = row_count*col_count ;
     this.player = player1;
-    this.gameView = new RowGameGUI(this); 
+    this.gameView = new RowGameGUI(this, c); 
 	for (int row = 0; row < 3; row++) {
 	    for (int col = 0; col < 3; col++) {
 		blocksData[row][col] = new RowBlockModel(this);
@@ -39,13 +42,14 @@ public class RowGameModel  implements RowGameRulesStrategy
     } // end for row
     resetGame(); 
     }
-    public RowGameModel(int r, int c) {
+    public RowGameModel(int r, int c, RowGameController controller) {
+        this.c = c 
         this.row_count = r; 
         this.col_count = c; 
         this.movesLeft = r*c ;
         this.player = player1;
         this.blocksData = new RowBlockModel[r][c] ; 
-        this.gameView = new RowGameGUI(this); 
+        this.gameView = new RowGameGUI(this, controller); 
         for (int row = 0; row < row_count; row++) {
             for (int col = 0; col < col_count; col++) {
             blocksData[row][col] = new RowBlockModel(this);
@@ -54,7 +58,7 @@ public class RowGameModel  implements RowGameRulesStrategy
         resetGame(); 
         }
     public void add_view(RowGameGUI v){ 
-        this.gameView = new RowGameGUI(this); 
+        this.gameView = new RowGameGUI(this,c ); 
     }
 
     public String get_Player_id(){
