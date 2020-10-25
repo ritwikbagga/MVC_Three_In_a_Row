@@ -19,7 +19,7 @@ public class Adaptor implements ActionListener {
 
     public void actionPerformed(ActionEvent e)
     { 
-            if(v.isReset((JButton) e.getSource()))
+            if(v.isReset((JButton)e.getSource()))
             {
                 this.c.request();
             }

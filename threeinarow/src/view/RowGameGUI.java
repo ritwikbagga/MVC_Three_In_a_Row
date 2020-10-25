@@ -26,6 +26,7 @@ public class RowGameGUI implements RowGameView
     public RowGameGUI(RowGameModel gameModel, RowGameController c) {
     this.gameModel = gameModel;
     this.c = c; 
+    this.adaptor = new Adaptor(this.c, this);  //initialze adaptor
 	
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setSize(new Dimension(500, 350));
@@ -43,7 +44,7 @@ public class RowGameGUI implements RowGameView
         gui.add(gamePanel, BorderLayout.NORTH);
         gui.add(options, BorderLayout.CENTER);
         gui.add(messages, BorderLayout.SOUTH);
-        this.adaptor = new Adaptor(this.c, this);  //initialze adaptor
+       
         reset.addActionListener(adaptor); //Adaptor used
     }
     public JFrame get_gui(){  //RowGameBoardView

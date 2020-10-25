@@ -19,13 +19,16 @@ public class RowGameBoardView implements RowGameView
 {   
     private JButton[][] blocks = new JButton[10][10];
     private JPanel gamePanel = new JPanel(new FlowLayout());
+    private Adaptor adaptor; 
 
     public RowGameBoardView(RowGameModel gameModel, Adaptor adaptor) {
         
-	super();
+    super();
+    
 
         JPanel game = new JPanel(new GridLayout(gameModel.get_rowCount(),gameModel.get_colCount()));
         gamePanel.add(game, BorderLayout.CENTER);
+        this.adaptor = adaptor;
         this.blocks = new JButton[gameModel.get_rowCount()][gameModel.get_colCount()]; 
        // Initialize a JButton for each cell of the 3x3 game board.
         for(int row = 0; row<gameModel.get_rowCount(); row++) {
@@ -33,7 +36,7 @@ public class RowGameBoardView implements RowGameView
                 blocks[row][column] = new JButton();
                 blocks[row][column].setPreferredSize(new Dimension(75,75));
                 game.add(blocks[row][column]);
-                blocks[row][column].addActionListener(adaptor);
+                blocks[row][column].addActionListener(this.adaptor);
             }
         }	
     }
