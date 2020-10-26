@@ -36,7 +36,7 @@ public class RowGameController {
 		else if (Game.equals("TicTacTo"))
 		gameModel = new TicTacTo(this);
 		else
-		gameModel = new RowGameModel(this); //default
+		gameModel = new RowGameModel(this); //default tic tac
 		
 	}
 

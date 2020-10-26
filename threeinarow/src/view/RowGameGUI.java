@@ -61,12 +61,7 @@ public class RowGameGUI implements RowGameView
         return this.adaptor; 
     }
 
-    // public void setActionListener(RowGameController c )
-    // {
-    //     this.adaptor = new Adaptor(c, this); 
-        
 
-    // }
 
  
     public RowGameBoardView get_GameBoardView(){ 
@@ -86,5 +81,9 @@ public class RowGameGUI implements RowGameView
     }
     public RowGameBoardView get_RowGameBoardView(){ 
         return this.gameBoardView; 
+    }
+
+    public RowGameStatusView get_StatusView(){ 
+        return this.gameStatusView; 
     }
 }

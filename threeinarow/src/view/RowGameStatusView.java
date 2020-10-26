@@ -39,4 +39,8 @@ public class RowGameStatusView implements RowGameView
 	public JPanel get_messages(){ 
 		return this.messages; 
 	}
+	public JTextArea get_textArea(){ 
+	return this.playerturn; 
+}
+
 }
