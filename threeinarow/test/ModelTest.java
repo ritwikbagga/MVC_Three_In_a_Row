@@ -41,21 +41,21 @@ public class ModelTest {
          assertEquals(9, game2.getModel().get_MovesLeft()); 
      
           b1 = game1.getModel().getView().get_GameBoardView().get_blocks()[0][0]; 
-          b2 = game1.getModel().getView().get_GameBoardView().get_blocks()[0][1]; //X
+          b2 = game1.getModel().getView().get_GameBoardView().get_blocks()[0][1]; 
          JButton b3 = game1.getModel().getView().get_GameBoardView().get_blocks()[0][2]; 
-         JButton b4 = game1.getModel().getView().get_GameBoardView().get_blocks()[1][0]; //O (in tie)
-         JButton b5 = game1.getModel().getView().get_GameBoardView().get_blocks()[1][1]; //X (in tie)
-         JButton b6 = game1.getModel().getView().get_GameBoardView().get_blocks()[1][2]; //O (in tie)
-         JButton b7 = game1.getModel().getView().get_GameBoardView().get_blocks()[2][0]; //X (in tie)
-         JButton b8 = game1.getModel().getView().get_GameBoardView().get_blocks()[2][1]; //O (in tie)
-         JButton b9 = game1.getModel().getView().get_GameBoardView().get_blocks()[2][2]; //X (in tie)
+         JButton b4 = game1.getModel().getView().get_GameBoardView().get_blocks()[1][0]; 
+         JButton b5 = game1.getModel().getView().get_GameBoardView().get_blocks()[1][1]; 
+         JButton b6 = game1.getModel().getView().get_GameBoardView().get_blocks()[1][2]; 
+         JButton b7 = game1.getModel().getView().get_GameBoardView().get_blocks()[2][0]; 
+         JButton b8 = game1.getModel().getView().get_GameBoardView().get_blocks()[2][1]; 
+         JButton b9 = game1.getModel().getView().get_GameBoardView().get_blocks()[2][2]; 
  
           //one of the players win 
          game1.getModel().move(b7);
          game1.getModel().move(b8);
          game1.getModel().move(b4);
          game1.getModel().move(b5);
-         game1.getModel().move(b1);
+         game1.getModel().move(b1); //game is in config where X(player 1) won
         assertEquals("Player " + "1"+ " " + "wins!", game1.getModel().getView().get_StatusView().get_textArea().getText()); 
         game1.getModel().resetGame();
 
@@ -69,7 +69,7 @@ public class ModelTest {
         game1.getModel().move(b6);
         game1.getModel().move(b3);
         game1.getModel().move(b2);
-        assertEquals(true, game1.getModel().isTie()); 
+        assertEquals(true, game1.getModel().isTie()); //game is in tie configration
         game1.getModel().resetGame();
 
         //test new game

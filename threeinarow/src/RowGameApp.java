@@ -15,14 +15,14 @@ public class RowGameApp
     int num = obj.nextInt(); 
     if(num==1)
         {
-            RowGameController game = new RowGameController("ThreeInARow");
+            RowGameController game = new RowGameController("ThreeInARow"); // player wants to play ThreeinARow
             game.getModel().startUp();
 
         }
    
     else
         {
-            RowGameController game = new RowGameController("TicTacTo");
+            RowGameController game = new RowGameController("TicTacTo"); //player wants to play tictacto
             game.getModel().startUp();
         }
     

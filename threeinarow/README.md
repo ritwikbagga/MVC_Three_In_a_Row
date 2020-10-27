@@ -1,5 +1,6 @@
-# ThreeInARow
-This is a basic Java implementation of the Three in a Row game.
+Author - Ritwik Bagga
+# Row Games
+This is a basic Java implementation of the Three in a Row game and TicTacTo game strictly following MVC design pattern.
 
 ### How to build and test (from Terminal):
 
@@ -15,6 +16,9 @@ This is a basic Java implementation of the Three in a Row game.
 
 1. After building the project (i.e., running `ant`), run the following command in the threeinarow folder:
    `java -cp bin RowGameApp`
+
+2. You will be prompted to by stdout to choose what game you want to play. 
+3. press 1 for “Three in a Row” and press 2 for “Tic Tac To”, then press enter. 
 
 ### How to clean up (from Terminal):
 
